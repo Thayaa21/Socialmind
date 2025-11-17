@@ -1,0 +1,15 @@
+
+feedparser
+
+
+praw
+
+
+transformers
+torch
+
+streamlit
+
+python-dotenv
+
+pytest
