@@ -70,6 +70,13 @@ class Database:
         # Fallback: filter in-memory articles
         return [a for a in self._articles if a.get('published_date', '') >= today]
     
+    def get_all_articles(self) -> List[Dict]:
+        """Get ALL articles from database"""
+        if self._use_supabase and self.client is not None:
+            result = self.client.table('articles').select('*').execute()
+            return result.data
+        return self._articles
+        
     def count_articles(self) -> int:
         """Count total articles in database"""
         if self._use_supabase and self.client is not None:
